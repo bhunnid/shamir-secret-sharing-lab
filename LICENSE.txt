@@ -2,8 +2,6 @@ ACADEMIC USE ONLY LICENSE
 
 This project is created strictly for academic and educational purposes as part of a cybersecurity laboratory exercise.
 
-The implementations of Diffie-Hellman and Elliptic Curve Diffie-Hellman (ECDH) presented in this repository are simplified models intended to demonstrate cryptographic principles, including:
-
 This project MUST NOT be used in production systems or real-world secure communications.
 
 No warranty is provided. The author assumes no responsibility for misuse of this code.
