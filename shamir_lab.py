@@ -1,6 +1,3 @@
-# Shamir Secret Sharing Implementation
-# Author: Brandon
-# Course: Cryptography Lab
 import random
 
 # -------------------------------
@@ -8,8 +5,6 @@ import random
 # -------------------------------
 def mod_inverse(a, p):
     return pow(a, -1, p)
-
-
 # -------------------------------
 # Generate Shares
 # -------------------------------
@@ -22,8 +17,6 @@ def generate_shares(secret, t, n, p):
 
     shares = [(x, polynomial(x)) for x in range(1, n+1)]
     return shares
-
-
 # -------------------------------
 # Reconstruct Secret
 # -------------------------------
@@ -43,8 +36,6 @@ def reconstruct_secret(shares, p):
         secret = (secret + yj * lagrange_coeff) % p
 
     return secret
-
-
 # -------------------------------
 # Additive Sharing
 # -------------------------------
@@ -53,12 +44,8 @@ def additive_sharing(secret, n, p):
     last_share = (secret - sum(shares)) % p
     shares.append(last_share)
     return shares
-
-
 def reconstruct_additive(shares, p):
     return sum(shares) % p
-
-
 # -------------------------------
 # MAIN TEST
 # -------------------------------
@@ -67,23 +54,18 @@ if __name__ == "__main__":
     secret = 1234
     t = 3
     n = 5
-
     print("=== Shamir Secret Sharing ===")
     shares = generate_shares(secret, t, n, p)
     print("Shares:", shares)
-
     subset = shares[:3]
     recovered = reconstruct_secret(subset, p)
     print("Recovered Secret (3 shares):", recovered)
-
     # Try with fewer shares
     subset_fail = shares[:2]
     recovered_fail = reconstruct_secret(subset_fail, p)
     print("Recovered Secret (2 shares):", recovered_fail)
-
     print("\n=== Additive Secret Sharing ===")
     add_shares = additive_sharing(secret, n, p)
     print("Additive Shares:", add_shares)
-
     recovered_add = reconstruct_additive(add_shares, p)
     print("Recovered Additive Secret:", recovered_add)
